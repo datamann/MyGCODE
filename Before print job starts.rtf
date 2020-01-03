@@ -1,30 +1,22 @@
 ; Indicate nozzle clean in progress on LCD
-M117 Clean
+; M117 Clean
 ; Uncomment to set your own temp [run warmer to clean out nozzle]
-M109 S190
-; Turn layer fan off
-M107
-; Set to metric [change to G20 if you want Imperial]
-G21
-; Force coordinates to be absolute relative to the origin
-G90
+; M109 S190
+M107    ; Turn layer fan off
+G21     ; Set to metric [change to G20 if you want Imperial]
+G90     ; Force coordinates to be absolute relative to the origin
 M82
-;Shows "Auto Bed Leveling" on the screen
-M117 Auto Bed Leveling
-;Auto Bed Level
-G29
-; Home X/Y/Z axis
-G28
+M117 Auto Bed Leveling      ;Shows "Auto Bed Leveling" on the screen
+G29     ;Auto Bed Level
+G28     ; Home X/Y/Z axis
 ; Move in 1mm from edge and up [z] 0.15mm
-G0 X1 Y0 Z0.15 F9000
+; G0 X1 Y0 Z0.15 F9000
 ; Set extruder to [0] zero
 ; G92 E0
 ; Extrude 100mm filiment along Y axis 290mm long to prime and clean the nozzle
 ; G1 Y200 E100 F500
-; Reset extruder to [0] zero end of cleaning run
-G92 E0
-; Retract filiment by 3 mm to reduce string effect
-G1 E-3 F500
+G92 E0      ; Reset extruder to [0] zero end of cleaning run
+G1 E-3 F500 ; Retract filiment by 3 mm to reduce string effect
 ; Move back to front of bed at safe Z height to shear strings
 ; Ensure extruder is not reset by other code or it will be 3mm short [see next line also]
 G1 X3 Y290 Z15 F9000

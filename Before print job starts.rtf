@@ -1,13 +1,11 @@
-; Indicate nozzle clean in progress on LCD
-; M117 Clean
-; Uncomment to set your own temp [run warmer to clean out nozzle]
-; M109 S190
+; M117 Clean    ; Indicate nozzle clean in progress on LCD
+; M109 S190     ; Uncomment to set your own temp [run warmer to clean out nozzle]
 M107    ; Turn layer fan off
 G21     ; Set to metric [change to G20 if you want Imperial]
-G90     ; Force coordinates to be absolute relative to the origin
-M82
-M117 Auto Bed Leveling      ;Shows "Auto Bed Leveling" on the screen
-G29     ;Auto Bed Level
+; G90     ; Force coordinates to be absolute relative to the origin
+; M82     ; E axis into absolute mode independent of the other axes
+M117 Auto Bed Leveling...      ;Shows "Auto Bed Leveling" on the screen
+G29     ; Auto Bed Level
 G28     ; Home X/Y/Z axis
 ; Move in 1mm from edge and up [z] 0.15mm
 ; G0 X1 Y0 Z0.15 F9000
@@ -20,8 +18,7 @@ G1 E-3 F500 ; Retract filiment by 3 mm to reduce string effect
 ; Move back to front of bed at safe Z height to shear strings
 ; Ensure extruder is not reset by other code or it will be 3mm short [see next line also]
 G1 X3 Y290 Z15 F9000
-; Uncomment if you believe exruder will be reset
+; Uncomment if you believe extruder will be reset
 ; Recommend turning off SKIRT in the slicer to avoid strings pulled into first layer
-;G1 E3 F500
-; Begin printing with sliced GCode after here
-M117 Printing...
+; G1 E3 F500
+M117 Printing...    ; Begin printing with sliced GCode after here
